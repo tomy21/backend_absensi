@@ -13,7 +13,7 @@ RUN yarn install
 # Salin semua file project
 COPY . .
 
-RUN yarn prisma generate
+RUN yarn generate
 
 # Build TypeScript
 RUN yarn build
