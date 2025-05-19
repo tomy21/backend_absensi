@@ -19,7 +19,7 @@ RUN npx prisma generate --schema=prisma/secondary/schema.prisma
 # Build TypeScript
 RUN yarn build
 
-EXPOSE 3000
+EXPOSE 4000
 
 # Jalankan aplikasi
 CMD ["yarn", "start"]
