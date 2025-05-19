@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/client-secondary"
+}
+
+datasource db {
+  provider = "mysql" // untuk MariaDB tetap pakai ini
+  url      = env("DATABASE_URL_SECONDARY")
+}
+
+enum Category {
+  APARTMENT         @map("Apartment")
+  RETAILS_MALLS     @map("Retails & Malls")
+  RUKO_OFFICE       @map("Ruko & Office")
+  OFFICE            @map("Office")
+  HOSPITAL          @map("Hospital")
+  EXTERNAL          @map("External")
+  OTHERS            @map("Others")
+  SCHOOL_UNIVERSITY @map("School / University")
+  NOT_SET           @map("NOT SET")
+}
+
+enum Vendor {
+  UNO
+  SKYNET
+  LIQUID
+  EZITAMA
+}
+
+enum Region {
+  Region_1 @map("REGION 1")
+  Region_2 @map("REGION 2")
+  Region_3 @map("REGION 3")
+  Region_4 @map("REGION 4")
+  Region_5 @map("REGION 5")
+  Region_6 @map("REGION 6")
+  Region_7 @map("REGION 7")
+  Region_8 @map("REGION 8")
+}
+
+model location_area {
+  id                 Int      @id @default(autoincrement())
+  location_code      String
+  location_name      String
+  KID                String
+  Create_by          Int
+  Update_by          Int?
+  created_at         DateTime @default(now())
+  updated_at         DateTime @updatedAt
+  address            String
+  coordinate         String
+  minimum_point      Int
+  region_coordinator String
+  category           Category
+  vendor             Vendor
+  region             Region
+  total_lot          Int?
+  total_lot_mobil    Int?
+  total_lot_motor    Int?
+}

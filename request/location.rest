@@ -1,0 +1,45 @@
+### CREATE LOCATION
+POST http://localhost:4000/v1/api/location
+Content-Type: application/json
+
+{
+  "location_code": "LOC001",
+  "location_name": "Grand Indonesia",
+  "Create_by": 1,
+  "Update_by": 1,
+  "address": "Jl. M.H. Thamrin No.1, Jakarta",
+  "urlLocation": "https://www.google.com/maps/place/6%C2%B013'42.6%22S+106%C2%B036'32.1%22E/@-6.2285041,106.6063288,17z/data=!3m1!4b1!4m4!3m3!8m2!3d-6.2285041!4d106.6089037?entry=ttu&g_ep=EgoyMDI1MDUwNi4wIKXMDSoASAFQAw%3D%3D",
+  "minimum_point": 10,
+  "region_coordinator": "Dedi",
+  "category": "RETAILS_MALLS",
+  "vendor": "UNO",
+  "region": "Region_1",
+  "total_lot": 100,
+  "total_lot_mobil": 70,
+  "total_lot_motor": 30
+}
+
+### CREATE LOCATION
+GET http://localhost:4000/v1/api/location/get-all
+Content-Type: application/json
+
+### CREATE LOCATION
+PUT http://localhost:4000/v1/api/location/updated/29
+Content-Type: application/json
+
+{
+  "location_code": "LOC001",
+  "location_name": "Grand Jawa",
+  "Create_by": 1,
+  "Update_by": 1,
+  "address": "Jl. M.H. Thamrin No.1, Jakarta",
+  "urlLocation": "https://www.google.com/maps/place/6%C2%B013'42.6%22S+106%C2%B036'32.1%22E/@-6.2285041,106.6063288,17z/data=!3m1!4b1!4m4!3m3!8m2!3d-6.2285041!4d106.6089037?entry=ttu&g_ep=EgoyMDI1MDUwNi4wIKXMDSoASAFQAw%3D%3D",
+  "minimum_point": 10,
+  "region_coordinator": "Dedi",
+  "category": "RETAILS_MALLS",
+  "vendor": "UNO",
+  "region": "Region_1",
+  "total_lot": 100,
+  "total_lot_mobil": 70,
+  "total_lot_motor": 30
+}

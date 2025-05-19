@@ -1,0 +1,56 @@
+### Get All Users
+GET http://localhost:4000/v1/api/roles/get-all
+Content-Type: application/json
+x-timestamp: 1747476983
+x-signature: e7a2006876a742c20a3fc8f5ccaaec2ad59bcba5c4a2362fbd3c0075bba65d1b
+
+###
+
+### Get User By ID
+GET http://localhost:4000/v1/api/users
+Content-Type: application/json
+
+###
+
+### Create New User
+POST http://localhost:4000/v1/api/roles
+Content-Type: application/json
+x-timestamp: 1747477182
+x-signature: f14a1a49abe3244cdd041ce0c43ecc30965d1306d0540660d08af74e29fec85c
+
+{
+  "Name": "Manager"
+}
+
+###
+
+### Update User
+GET http://localhost:4000/v1/api/roles/get-byid/1
+Content-Type: application/json
+x-timestamp: 1747477764
+x-signature: 2210acfd2d7624d7817bb9bda5623c5bd980d65364eebc58b090062cc0116970
+
+
+###
+
+### Update User
+PUT http://localhost:4000/v1/api/roles/updated/1
+Content-Type: application/json
+x-timestamp: 1747477936
+x-signature: b4e317f6ec76755f8e4a2a645378a58ef2338c674ad0b7992d7d878a397b7591
+
+{
+  "Name": "Manager1"
+}
+
+###
+
+### Delete User
+DELETE http://localhost:4000/v1/api/roles/
+Content-Type: application/json
+
+###
+
+### Logout User
+POST http://localhost:4000/v1/api/users/logout
+Content-Type: application/json

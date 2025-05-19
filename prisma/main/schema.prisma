@@ -1,0 +1,108 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/client-main"
+}
+
+datasource db {
+  provider = "mysql" // untuk MariaDB tetap pakai ini
+  url      = env("DATABASE_URL_MAIN")
+}
+
+enum Record {
+  Active
+  Inactive
+  Delete
+}
+
+enum StatusKaryawan {
+  InHouse
+  DailyWorker
+}
+
+enum Status {
+  Active
+  Inactive
+  Waiting
+}
+
+enum StatusAttendance {
+  Hadir
+  Izin
+  Sakit
+  Cuti
+  Absen
+}
+
+model Users {
+  Id        String    @id @default(uuid()) // UUID sebagai primary key
+  Username  String    @unique
+  Email     String    @unique
+  Password  String
+  RoleId    Int
+  CreatedAt DateTime  @default(now())
+  CreatedBy String
+  UpdatedAt DateTime  @updatedAt
+  UpdatedBy String?
+  DeletedAt DateTime?
+  DeletedBy String?
+  LastLogin DateTime?
+
+  Record Record @default(Active)
+
+  role Role @relation(fields: [RoleId], references: [Id])
+
+  user DetailUsers[]
+}
+
+model Role {
+  Id        Int      @id @default(autoincrement())
+  Name      String
+  CreatedAt DateTime @default(now())
+  UpdatedAt DateTime @updatedAt
+
+  users Users[]
+}
+
+model DetailUsers {
+  Id             String         @id @default(uuid())
+  UserId         String
+  NIK            String
+  Name           String
+  Departement    String
+  Divisi         String
+  Address        String?
+  NoTlp          String?
+  LocationCode   String?
+  StatusKaryawan StatusKaryawan
+  Status         Status         @default(Active)
+  CreatedBy      String
+  CreatedAt      DateTime       @default(now())
+  UpdatedAt      DateTime       @updatedAt
+  UpdatedBy      String?
+  DeletedAt      DateTime?
+  DeletedBy      String?
+  Record         Record
+
+  user Users @relation(fields: [UserId], references: [Id])
+}
+
+model Attendance {
+  Id           Int              @id @default(autoincrement())
+  UserId       String
+  Date         DateTime
+  InTime       DateTime
+  OutTime      DateTime?
+  LocationCode String
+  LocationName String
+  Address      String
+  Fullname     String
+  Duration     Int
+  pathIn       String?
+  pathOut      String?
+  Status       StatusAttendance
+  Description  String
+  CreatedAt    DateTime         @default(now())
+  CreatedBy    String
+  UpdatedAt    DateTime         @updatedAt
+  UpdatedBy    String?
+}

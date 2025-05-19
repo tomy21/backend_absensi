@@ -1,0 +1,60 @@
+### Get All Detail Users
+GET http://localhost:4000/v1/api/detail-users/get-all?page=1&limit=10
+X-timestamp: 1747564102
+X-Signature: 6fbbd463b2ac984096d873e4ca1b79a8f3569b1074e703040d4c914e32840a49
+
+###
+
+### Get Detail User by ID
+GET http://localhost:4000/v1/api/detail-users/get-byid/78219e88-f815-4265-a508-e66b211dfd4a
+X-timestamp: 1747564102
+X-Signature: 6fbbd463b2ac984096d873e4ca1b79a8f3569b1074e703040d4c914e32840a49
+
+###
+
+### Create Detail User
+POST http://localhost:4000/v1/api/detail-users
+Content-Type: application/json
+X-timestamp: 1747563838
+X-Signature: 26eee162621ba3b78aff395780cffd29d84d19b562a4ab86a52ad286b620022b
+
+{
+    "Username": "tomyagung",
+    "Email": "tomy@gmail.com",
+    "RoleId": 2,
+    "Name": "Tomy Agung",
+    "Departement": "IT",
+    "Divisi": "IT Development",
+    "Address": "Tangerang",
+    "NoTlp": "+628123126111",
+    "LocationCode":"004SK",
+    "StatusKaryawan": "InHouse"
+}
+
+###
+
+### Update Detail User
+PUT http://localhost:4000/v1/api/detail-users/updated/REPLACE_WITH_ID
+Content-Type: application/json
+X-timestamp: 1747554622
+X-Signature: 25abfe60ac3057fa8fa47296c52f08391f0e46c6a35c9d5ae6a40a6f67a8883a
+
+{
+    "Username": "tomyagung",
+    "Email": "tomy@gmail.com",
+    "RoleId": 2,
+    "Name": "Tomy Agung",
+    "Departement": "IT",
+    "Divisi": "IT Development",
+    "Address": "Tangerang",
+    "NoTlp": "+628123126111",
+    "LocationCode":"004SK",
+    "StatusKaryawan": "InHouse"
+}
+
+###
+
+### Delete Detail User
+DELETE http://localhost:4000/v1/api/detail-users/delete/REPLACE_WITH_ID
+X-timestamp: 1747554622
+X-Signature: 25abfe60ac3057fa8fa47296c52f08391f0e46c6a35c9d5ae6a40a6f67a8883a

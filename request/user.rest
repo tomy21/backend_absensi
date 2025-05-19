@@ -1,0 +1,69 @@
+### Login User
+POST http://localhost:4000/v1/api/auth/login
+Content-Type: application/json
+x-timestamp: 1747459629
+x-signature: cc1a409c735e0f006e46327650900cacc7c32139626351dc0b5ab0a74d08f014
+
+{
+  "identifier": "superAdmin",
+  "password": "sky123",
+  "remember": true
+}
+
+###
+
+### Login User
+POST http://localhost:4000/v1/api/auth/secure-action
+Content-Type: application/json
+
+
+###
+
+### Get All Users
+GET http://localhost:4000/v1/api/users/get-all
+Content-Type: application/json
+x-timestamp: 1747466206
+x-signature: 575188804e2b74a701a955dce34cd4d85777b39a471fdc0f4718b32404eb95d1
+
+###
+
+### Get User By ID
+GET http://localhost:4000/v1/api/users
+Content-Type: application/json
+
+###
+
+### Create New User
+POST http://localhost:4000/v1/api/users
+Content-Type: application/json
+
+{
+  "Username": "superAdmin",
+  "Email": "superAdmin@example.com",
+  "Password": "sky123",
+  "RoleId": 1
+}
+
+###
+
+### Update User
+PUT http://localhost:4000/v1/api/users/updated/
+Content-Type: application/json
+
+{
+  "Username": "superAdmin1",
+  "Email": "superAdmin@example.com",
+  "RoleId": 1,
+}
+
+###
+
+### Delete User
+DELETE http://localhost:4000/v1/api/users/replace-user-id-here
+Content-Type: application/json
+
+###
+
+### Logout User
+POST http://localhost:4000/v1/api/users/logout
+Content-Type: application/json
