@@ -13,7 +13,8 @@ RUN yarn install
 # Salin semua file project
 COPY . .
 
-RUN yarn generate
+RUN npx prisma generate --schema=prisma/main/schema.prisma
+RUN npx prisma generate --schema=prisma/secondary/schema.prisma
 
 # Build TypeScript
 RUN yarn build
