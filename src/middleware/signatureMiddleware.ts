@@ -13,17 +13,12 @@ export const signatureMiddleware = (
   const diff = Math.abs(now - Number(timestamp));
 
   if (diff > 300) {
-    res.status(400).json({ message: "Request expired" });
+    res.status(400).json({ message: "Signature expired" });
     return;
   }
 
   const body = JSON.stringify(req.body || {});
   const valid = verifyHMAC(signature, body, timestamp);
-
-  console.log(body);
-  console.log(signature);
-  console.log(timestamp);
-  console.log(valid);
 
   if (!valid) {
     res.status(401).json({ message: "Invalid signature" });

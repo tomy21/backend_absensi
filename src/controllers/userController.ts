@@ -7,6 +7,7 @@ import {
 } from "../helper/responseCode";
 import { dbMain } from "../prisma/client";
 import { Record } from "../../prisma/generated/client-main";
+import generatePassword from "../helper/generatePassword";
 
 export const getUserAll = async (req: Request, res: Response) => {
   try {
@@ -128,7 +129,8 @@ export const createUser = async (
       return;
     }
 
-    const hashedPassword = await bcrypt.hash(Password, 10);
+    const rawPassword = generatePassword(); // kamu bisa log / kirim via email
+    const hashedPassword = await bcrypt.hash(rawPassword, 10);
 
     const newUser = await dbMain.users.create({
       data: {
@@ -141,6 +143,7 @@ export const createUser = async (
       select: {
         Id: true,
         Username: true,
+        Password: true,
         Email: true,
         RoleId: true,
         CreatedAt: true,

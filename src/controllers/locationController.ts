@@ -42,8 +42,6 @@ export const createLocation = async (
 
     const nextKID = generateNextKID(lastLocation?.KID ?? null);
 
-    console.log(coordinate);
-
     const location = await dbSecondary.location_area.create({
       data: {
         location_code,

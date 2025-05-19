@@ -8,7 +8,7 @@ export const authMiddleware = (
 ): void => {
   const token = req.cookies?.token;
   if (!token) {
-    res.status(401).json({ message: "No token" });
+    res.status(401).json({ message: "Access denied, you are not logged in!" });
     return;
   }
 
