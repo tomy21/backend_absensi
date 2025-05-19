@@ -28,7 +28,8 @@ export const GetSignature = async (
   res: Response
 ): Promise<void> => {
   try {
-    const signature = await GenerateSignature({});
+    const body = "{}";
+    const signature = await GenerateSignature(body);
 
     res.status(200).json({ signature });
   } catch (error) {
