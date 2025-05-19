@@ -13,10 +13,12 @@ RUN yarn install
 # Salin semua file project
 COPY . .
 
+RUN yarn prisma generate
+
 # Build TypeScript
 RUN yarn build
 
 EXPOSE 3000
 
 # Jalankan aplikasi
-CMD ["node", "dist/index.js"]
+CMD ["yarn", "start"]

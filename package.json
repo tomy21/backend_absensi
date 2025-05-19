@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "generate": "prisma generate --schema=prisma/schema-main.prisma && prisma generate --schema=prisma/schema-secondary.prisma",
     "build": "tsc",
     "start": "node dist/server.js",
     "prisma": "prisma"
