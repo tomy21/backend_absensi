@@ -2,7 +2,9 @@ version: "3.8"
 
 services:
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "9228:3000"
     environment:
@@ -11,9 +13,5 @@ services:
       - NODE_ENV=production
       - JWT_SECRET=158243e2-ccc0-4798-a944-2a5b0d1c90f3
       - SIGNATURE_SECRET=c719f771-69ce-4945-9895-1759fb49df87
-    depends_on:
-      - db
-    volumes:
-      - .:/app
-volumes:
-  postgres_data:
+
+    restart: always
