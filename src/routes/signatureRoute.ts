@@ -7,8 +7,8 @@ import {
 
 const router = express.Router();
 
-router.get("/signatureAddUser", AddSignatureUserAccount);
-router.get("/signatureAddUserDetail", AddSignatureUserDetail);
-router.get("/signatureGet", GetSignature);
+router.post("/signatureAddUser", AddSignatureUserAccount);
+router.post("/signatureAddUserDetail", AddSignatureUserDetail);
+router.post("/signatureGet", GetSignature);
 
 export default router;
