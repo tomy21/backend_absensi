@@ -16,7 +16,7 @@ router.use(authMiddleware as express.RequestHandler);
 
 router.get("/get-all", getAllDetailUser);
 router.get("/get-byid/:id", getDetailUserById);
-router.put("/updated/:id", updateDetailUser);
+router.put("/updated/:id", upload.single("photo"), updateDetailUser);
 router.post("/", upload.single("photo"), createDetailUser);
 router.delete("/delete/:id", deleteDetailUser);
 

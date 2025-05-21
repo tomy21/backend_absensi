@@ -272,17 +272,36 @@ export const updateDetailUser = async (
 ): Promise<void> => {
   try {
     const { id } = req.params;
+    const userId = req.TokeUserPayload?.id;
+
+    const userUpdated = await dbMain.users.findUnique({
+      where: { Id: userId },
+    });
+
+    const file = req.file;
+    if (!file) {
+      res
+        .status(400)
+        .json(createResponse("USER", "ERROR", "Photo is required", null));
+      return;
+    }
+
+    const photoPath = `uploads/${file.filename}`;
+
     const {
-      NIK,
-      Name,
+      KTPNo,
       Departement,
       Divisi,
+      Name,
       Address,
+      Gender,
+      Email,
+      DOB,
       NoTlp,
       LocationCode,
       StatusKaryawan,
+      JoinDate,
       Status,
-      UpdatedBy,
     } = req.body;
 
     const existing = await dbMain.detailUsers.findUnique({ where: { Id: id } });
@@ -293,28 +312,45 @@ export const updateDetailUser = async (
       return;
     }
 
-    const detailUser = await dbMain.detailUsers.update({
-      where: { Id: id },
-      data: {
-        NIK,
-        Name,
-        Departement,
-        Divisi,
-        Address,
-        NoTlp,
-        LocationCode,
-        StatusKaryawan,
-        Status,
-        UpdatedBy,
-      },
-    });
+    // Mulai transaksi Prisma
+    const [updateEmail, detailUser] = await dbMain.$transaction([
+      dbMain.users.update({
+        where: { Id: userId },
+        data: {
+          Email,
+          UpdatedBy: userUpdated?.Username || "System",
+        },
+      }),
+      dbMain.detailUsers.update({
+        where: { Id: id },
+        data: {
+          KTPNo,
+          Name,
+          Departement,
+          Divisi,
+          Address,
+          NoTlp,
+          LocationCode,
+          Gender,
+          DOB: new Date(DOB),
+          JoinDate: new Date(JoinDate),
+          StatusKaryawan,
+          Status,
+          ProfilePath: photoPath,
+          UpdatedBy: userUpdated?.Username || "System",
+        },
+      }),
+    ]);
 
+    // Jika berhasil semua
     res
       .status(200)
-      .json(createResponse("USER", "UPDATE", "Success", detailUser));
+      .json(createResponse("USER", "UPDATE", "Success to update", detailUser));
   } catch (error) {
-    console.error(error);
-    res.status(500).json(createResponse("USER", "ERROR", "Server error", null));
+    console.error("Update failed:", error);
+    res
+      .status(500)
+      .json(createResponse("USER", "ERROR", "Failed to update data", null));
   }
 };
 
