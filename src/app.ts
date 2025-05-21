@@ -8,6 +8,7 @@ import detailUserRoute from "./routes/detailUserRoutes";
 import locationRoutes from "./routes/locationRoutes";
 import attendanceRoute from "./routes/attendanceRoute";
 import signatureRoute from "./routes/signatureRoute";
+import exportAttendanceExcel from "./routes/exportRoute";
 import dotenv from "dotenv";
 import path from "path";
 
@@ -28,5 +29,6 @@ app.use("/v1/api/detail-users", detailUserRoute);
 app.use("/v1/api/location", locationRoutes);
 app.use("/v1/api/attendance", attendanceRoute);
 app.use("/v1/api/signature", signatureRoute);
+app.use("/v1/api/export", exportAttendanceExcel);
 
 export default app;
