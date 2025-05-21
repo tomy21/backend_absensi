@@ -26,7 +26,7 @@ export const Attendance = async (
       return;
     }
 
-    const photoPath = `uploads/in-${req.file?.filename}`;
+    const photoPath = `uploads/${req.file?.filename}`;
 
     const locationUser = await dbMain.detailUsers.findFirst({
       where: {
@@ -153,7 +153,7 @@ export const AttendanceOut = async (
       return;
     }
 
-    const photoPath = `uploads/out-${req.file?.filename}`;
+    const photoPath = `uploads/${req.file?.filename}`;
 
     const locationUser = await dbMain.detailUsers.findFirst({
       where: {
