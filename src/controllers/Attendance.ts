@@ -303,7 +303,7 @@ export const getAllAttendance = async (
     const limit = Number(req.query.limit) || 10;
     const skip = (page - 1) * limit;
 
-    const totalItems = await dbMain.detailUsers.count();
+    const totalItems = await dbMain.attendance.count();
 
     const attendance = await dbMain.attendance.findMany({
       select: {
