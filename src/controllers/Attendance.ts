@@ -304,11 +304,42 @@ export const getAllAttendance = async (
     const skip = (page - 1) * limit;
 
     const totalItems = await dbMain.attendance.count();
+    const totalKaryawan = await dbMain.users.count({
+      where: {
+        Record: "Active",
+      },
+    });
+    const totalHadir = await dbMain.attendance.count({
+      where: {
+        Status: "Hadir",
+      },
+    });
+    const totalIzin = await dbMain.attendance.count({
+      where: {
+        Status: "Izin",
+      },
+    });
+    const totalSakit = await dbMain.attendance.count({
+      where: {
+        Status: "Sakit",
+      },
+    });
+    const totalCuti = await dbMain.attendance.count({
+      where: {
+        Status: "Cuti",
+      },
+    });
+    const totalAbsen = await dbMain.attendance.count({
+      where: {
+        Status: "Absen",
+      },
+    });
 
     const attendance = await dbMain.attendance.findMany({
       select: {
         Id: true,
         UserId: true,
+        Fullname: true,
         Date: true,
         LocationName: true,
         pathIn: true,
@@ -327,6 +358,22 @@ export const getAllAttendance = async (
       },
     });
 
+    const Response = [
+      {
+        Summary: {
+          Karyawan: totalKaryawan,
+          Hadir: totalHadir,
+          Izin: totalIzin,
+          Sakit: totalSakit,
+          Cuti: totalCuti,
+          Absen: totalAbsen,
+        },
+      },
+      {
+        data: attendance,
+      },
+    ];
+
     res
       .status(200)
       .json(
@@ -334,7 +381,7 @@ export const getAllAttendance = async (
           "ATTENDANCE",
           "READ",
           "Success",
-          attendance,
+          Response,
           page,
           limit,
           totalItems
