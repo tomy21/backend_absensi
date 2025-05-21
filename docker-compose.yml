@@ -15,3 +15,6 @@ services:
       - SIGNATURE_SECRET=c719f771-69ce-4945-9895-1759fb49df87
 
     restart: always
+
+    volumes:
+      - ./uploads:/app/uploads
