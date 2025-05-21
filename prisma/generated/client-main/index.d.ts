@@ -55,6 +55,14 @@ export const StatusKaryawan: {
 export type StatusKaryawan = (typeof StatusKaryawan)[keyof typeof StatusKaryawan]
 
 
+export const Gender: {
+  Pria: 'Pria',
+  Perempuan: 'Perempuan'
+};
+
+export type Gender = (typeof Gender)[keyof typeof Gender]
+
+
 export const Status: {
   Active: 'Active',
   Inactive: 'Inactive',
@@ -83,6 +91,10 @@ export const Record: typeof $Enums.Record
 export type StatusKaryawan = $Enums.StatusKaryawan
 
 export const StatusKaryawan: typeof $Enums.StatusKaryawan
+
+export type Gender = $Enums.Gender
+
+export const Gender: typeof $Enums.Gender
 
 export type Status = $Enums.Status
 
@@ -3302,13 +3314,18 @@ export namespace Prisma {
     Id: string | null
     UserId: string | null
     NIK: string | null
+    KTPNo: string | null
     Name: string | null
     Departement: string | null
     Divisi: string | null
     Address: string | null
+    DOB: Date | null
     NoTlp: string | null
     LocationCode: string | null
+    Gender: $Enums.Gender | null
     StatusKaryawan: $Enums.StatusKaryawan | null
+    JoinDate: Date | null
+    ProfilePath: string | null
     Status: $Enums.Status | null
     CreatedBy: string | null
     CreatedAt: Date | null
@@ -3323,13 +3340,18 @@ export namespace Prisma {
     Id: string | null
     UserId: string | null
     NIK: string | null
+    KTPNo: string | null
     Name: string | null
     Departement: string | null
     Divisi: string | null
     Address: string | null
+    DOB: Date | null
     NoTlp: string | null
     LocationCode: string | null
+    Gender: $Enums.Gender | null
     StatusKaryawan: $Enums.StatusKaryawan | null
+    JoinDate: Date | null
+    ProfilePath: string | null
     Status: $Enums.Status | null
     CreatedBy: string | null
     CreatedAt: Date | null
@@ -3344,13 +3366,18 @@ export namespace Prisma {
     Id: number
     UserId: number
     NIK: number
+    KTPNo: number
     Name: number
     Departement: number
     Divisi: number
     Address: number
+    DOB: number
     NoTlp: number
     LocationCode: number
+    Gender: number
     StatusKaryawan: number
+    JoinDate: number
+    ProfilePath: number
     Status: number
     CreatedBy: number
     CreatedAt: number
@@ -3367,13 +3394,18 @@ export namespace Prisma {
     Id?: true
     UserId?: true
     NIK?: true
+    KTPNo?: true
     Name?: true
     Departement?: true
     Divisi?: true
     Address?: true
+    DOB?: true
     NoTlp?: true
     LocationCode?: true
+    Gender?: true
     StatusKaryawan?: true
+    JoinDate?: true
+    ProfilePath?: true
     Status?: true
     CreatedBy?: true
     CreatedAt?: true
@@ -3388,13 +3420,18 @@ export namespace Prisma {
     Id?: true
     UserId?: true
     NIK?: true
+    KTPNo?: true
     Name?: true
     Departement?: true
     Divisi?: true
     Address?: true
+    DOB?: true
     NoTlp?: true
     LocationCode?: true
+    Gender?: true
     StatusKaryawan?: true
+    JoinDate?: true
+    ProfilePath?: true
     Status?: true
     CreatedBy?: true
     CreatedAt?: true
@@ -3409,13 +3446,18 @@ export namespace Prisma {
     Id?: true
     UserId?: true
     NIK?: true
+    KTPNo?: true
     Name?: true
     Departement?: true
     Divisi?: true
     Address?: true
+    DOB?: true
     NoTlp?: true
     LocationCode?: true
+    Gender?: true
     StatusKaryawan?: true
+    JoinDate?: true
+    ProfilePath?: true
     Status?: true
     CreatedBy?: true
     CreatedAt?: true
@@ -3503,13 +3545,18 @@ export namespace Prisma {
     Id: string
     UserId: string
     NIK: string
-    Name: string
-    Departement: string
-    Divisi: string
+    KTPNo: string | null
+    Name: string | null
+    Departement: string | null
+    Divisi: string | null
     Address: string | null
+    DOB: Date | null
     NoTlp: string | null
     LocationCode: string | null
+    Gender: $Enums.Gender | null
     StatusKaryawan: $Enums.StatusKaryawan
+    JoinDate: Date | null
+    ProfilePath: string | null
     Status: $Enums.Status
     CreatedBy: string
     CreatedAt: Date
@@ -3541,13 +3588,18 @@ export namespace Prisma {
     Id?: boolean
     UserId?: boolean
     NIK?: boolean
+    KTPNo?: boolean
     Name?: boolean
     Departement?: boolean
     Divisi?: boolean
     Address?: boolean
+    DOB?: boolean
     NoTlp?: boolean
     LocationCode?: boolean
+    Gender?: boolean
     StatusKaryawan?: boolean
+    JoinDate?: boolean
+    ProfilePath?: boolean
     Status?: boolean
     CreatedBy?: boolean
     CreatedAt?: boolean
@@ -3565,13 +3617,18 @@ export namespace Prisma {
     Id?: boolean
     UserId?: boolean
     NIK?: boolean
+    KTPNo?: boolean
     Name?: boolean
     Departement?: boolean
     Divisi?: boolean
     Address?: boolean
+    DOB?: boolean
     NoTlp?: boolean
     LocationCode?: boolean
+    Gender?: boolean
     StatusKaryawan?: boolean
+    JoinDate?: boolean
+    ProfilePath?: boolean
     Status?: boolean
     CreatedBy?: boolean
     CreatedAt?: boolean
@@ -3582,7 +3639,7 @@ export namespace Prisma {
     Record?: boolean
   }
 
-  export type DetailUsersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"Id" | "UserId" | "NIK" | "Name" | "Departement" | "Divisi" | "Address" | "NoTlp" | "LocationCode" | "StatusKaryawan" | "Status" | "CreatedBy" | "CreatedAt" | "UpdatedAt" | "UpdatedBy" | "DeletedAt" | "DeletedBy" | "Record", ExtArgs["result"]["detailUsers"]>
+  export type DetailUsersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"Id" | "UserId" | "NIK" | "KTPNo" | "Name" | "Departement" | "Divisi" | "Address" | "DOB" | "NoTlp" | "LocationCode" | "Gender" | "StatusKaryawan" | "JoinDate" | "ProfilePath" | "Status" | "CreatedBy" | "CreatedAt" | "UpdatedAt" | "UpdatedBy" | "DeletedAt" | "DeletedBy" | "Record", ExtArgs["result"]["detailUsers"]>
   export type DetailUsersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UsersDefaultArgs<ExtArgs>
   }
@@ -3596,13 +3653,18 @@ export namespace Prisma {
       Id: string
       UserId: string
       NIK: string
-      Name: string
-      Departement: string
-      Divisi: string
+      KTPNo: string | null
+      Name: string | null
+      Departement: string | null
+      Divisi: string | null
       Address: string | null
+      DOB: Date | null
       NoTlp: string | null
       LocationCode: string | null
+      Gender: $Enums.Gender | null
       StatusKaryawan: $Enums.StatusKaryawan
+      JoinDate: Date | null
+      ProfilePath: string | null
       Status: $Enums.Status
       CreatedBy: string
       CreatedAt: Date
@@ -3984,13 +4046,18 @@ export namespace Prisma {
     readonly Id: FieldRef<"DetailUsers", 'String'>
     readonly UserId: FieldRef<"DetailUsers", 'String'>
     readonly NIK: FieldRef<"DetailUsers", 'String'>
+    readonly KTPNo: FieldRef<"DetailUsers", 'String'>
     readonly Name: FieldRef<"DetailUsers", 'String'>
     readonly Departement: FieldRef<"DetailUsers", 'String'>
     readonly Divisi: FieldRef<"DetailUsers", 'String'>
     readonly Address: FieldRef<"DetailUsers", 'String'>
+    readonly DOB: FieldRef<"DetailUsers", 'DateTime'>
     readonly NoTlp: FieldRef<"DetailUsers", 'String'>
     readonly LocationCode: FieldRef<"DetailUsers", 'String'>
+    readonly Gender: FieldRef<"DetailUsers", 'Gender'>
     readonly StatusKaryawan: FieldRef<"DetailUsers", 'StatusKaryawan'>
+    readonly JoinDate: FieldRef<"DetailUsers", 'DateTime'>
+    readonly ProfilePath: FieldRef<"DetailUsers", 'String'>
     readonly Status: FieldRef<"DetailUsers", 'Status'>
     readonly CreatedBy: FieldRef<"DetailUsers", 'String'>
     readonly CreatedAt: FieldRef<"DetailUsers", 'DateTime'>
@@ -5470,13 +5537,18 @@ export namespace Prisma {
     Id: 'Id',
     UserId: 'UserId',
     NIK: 'NIK',
+    KTPNo: 'KTPNo',
     Name: 'Name',
     Departement: 'Departement',
     Divisi: 'Divisi',
     Address: 'Address',
+    DOB: 'DOB',
     NoTlp: 'NoTlp',
     LocationCode: 'LocationCode',
+    Gender: 'Gender',
     StatusKaryawan: 'StatusKaryawan',
+    JoinDate: 'JoinDate',
+    ProfilePath: 'ProfilePath',
     Status: 'Status',
     CreatedBy: 'CreatedBy',
     CreatedAt: 'CreatedAt',
@@ -5554,12 +5626,14 @@ export namespace Prisma {
     Id: 'Id',
     UserId: 'UserId',
     NIK: 'NIK',
+    KTPNo: 'KTPNo',
     Name: 'Name',
     Departement: 'Departement',
     Divisi: 'Divisi',
     Address: 'Address',
     NoTlp: 'NoTlp',
     LocationCode: 'LocationCode',
+    ProfilePath: 'ProfilePath',
     CreatedBy: 'CreatedBy',
     UpdatedBy: 'UpdatedBy',
     DeletedBy: 'DeletedBy'
@@ -5614,6 +5688,13 @@ export namespace Prisma {
    * Reference to a field of type 'Record'
    */
   export type EnumRecordFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Record'>
+    
+
+
+  /**
+   * Reference to a field of type 'Gender'
+   */
+  export type EnumGenderFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Gender'>
     
 
 
@@ -5809,13 +5890,18 @@ export namespace Prisma {
     Id?: StringFilter<"DetailUsers"> | string
     UserId?: StringFilter<"DetailUsers"> | string
     NIK?: StringFilter<"DetailUsers"> | string
-    Name?: StringFilter<"DetailUsers"> | string
-    Departement?: StringFilter<"DetailUsers"> | string
-    Divisi?: StringFilter<"DetailUsers"> | string
+    KTPNo?: StringNullableFilter<"DetailUsers"> | string | null
+    Name?: StringNullableFilter<"DetailUsers"> | string | null
+    Departement?: StringNullableFilter<"DetailUsers"> | string | null
+    Divisi?: StringNullableFilter<"DetailUsers"> | string | null
     Address?: StringNullableFilter<"DetailUsers"> | string | null
+    DOB?: DateTimeNullableFilter<"DetailUsers"> | Date | string | null
     NoTlp?: StringNullableFilter<"DetailUsers"> | string | null
     LocationCode?: StringNullableFilter<"DetailUsers"> | string | null
+    Gender?: EnumGenderNullableFilter<"DetailUsers"> | $Enums.Gender | null
     StatusKaryawan?: EnumStatusKaryawanFilter<"DetailUsers"> | $Enums.StatusKaryawan
+    JoinDate?: DateTimeNullableFilter<"DetailUsers"> | Date | string | null
+    ProfilePath?: StringNullableFilter<"DetailUsers"> | string | null
     Status?: EnumStatusFilter<"DetailUsers"> | $Enums.Status
     CreatedBy?: StringFilter<"DetailUsers"> | string
     CreatedAt?: DateTimeFilter<"DetailUsers"> | Date | string
@@ -5831,13 +5917,18 @@ export namespace Prisma {
     Id?: SortOrder
     UserId?: SortOrder
     NIK?: SortOrder
-    Name?: SortOrder
-    Departement?: SortOrder
-    Divisi?: SortOrder
+    KTPNo?: SortOrderInput | SortOrder
+    Name?: SortOrderInput | SortOrder
+    Departement?: SortOrderInput | SortOrder
+    Divisi?: SortOrderInput | SortOrder
     Address?: SortOrderInput | SortOrder
+    DOB?: SortOrderInput | SortOrder
     NoTlp?: SortOrderInput | SortOrder
     LocationCode?: SortOrderInput | SortOrder
+    Gender?: SortOrderInput | SortOrder
     StatusKaryawan?: SortOrder
+    JoinDate?: SortOrderInput | SortOrder
+    ProfilePath?: SortOrderInput | SortOrder
     Status?: SortOrder
     CreatedBy?: SortOrder
     CreatedAt?: SortOrder
@@ -5857,13 +5948,18 @@ export namespace Prisma {
     NOT?: DetailUsersWhereInput | DetailUsersWhereInput[]
     UserId?: StringFilter<"DetailUsers"> | string
     NIK?: StringFilter<"DetailUsers"> | string
-    Name?: StringFilter<"DetailUsers"> | string
-    Departement?: StringFilter<"DetailUsers"> | string
-    Divisi?: StringFilter<"DetailUsers"> | string
+    KTPNo?: StringNullableFilter<"DetailUsers"> | string | null
+    Name?: StringNullableFilter<"DetailUsers"> | string | null
+    Departement?: StringNullableFilter<"DetailUsers"> | string | null
+    Divisi?: StringNullableFilter<"DetailUsers"> | string | null
     Address?: StringNullableFilter<"DetailUsers"> | string | null
+    DOB?: DateTimeNullableFilter<"DetailUsers"> | Date | string | null
     NoTlp?: StringNullableFilter<"DetailUsers"> | string | null
     LocationCode?: StringNullableFilter<"DetailUsers"> | string | null
+    Gender?: EnumGenderNullableFilter<"DetailUsers"> | $Enums.Gender | null
     StatusKaryawan?: EnumStatusKaryawanFilter<"DetailUsers"> | $Enums.StatusKaryawan
+    JoinDate?: DateTimeNullableFilter<"DetailUsers"> | Date | string | null
+    ProfilePath?: StringNullableFilter<"DetailUsers"> | string | null
     Status?: EnumStatusFilter<"DetailUsers"> | $Enums.Status
     CreatedBy?: StringFilter<"DetailUsers"> | string
     CreatedAt?: DateTimeFilter<"DetailUsers"> | Date | string
@@ -5879,13 +5975,18 @@ export namespace Prisma {
     Id?: SortOrder
     UserId?: SortOrder
     NIK?: SortOrder
-    Name?: SortOrder
-    Departement?: SortOrder
-    Divisi?: SortOrder
+    KTPNo?: SortOrderInput | SortOrder
+    Name?: SortOrderInput | SortOrder
+    Departement?: SortOrderInput | SortOrder
+    Divisi?: SortOrderInput | SortOrder
     Address?: SortOrderInput | SortOrder
+    DOB?: SortOrderInput | SortOrder
     NoTlp?: SortOrderInput | SortOrder
     LocationCode?: SortOrderInput | SortOrder
+    Gender?: SortOrderInput | SortOrder
     StatusKaryawan?: SortOrder
+    JoinDate?: SortOrderInput | SortOrder
+    ProfilePath?: SortOrderInput | SortOrder
     Status?: SortOrder
     CreatedBy?: SortOrder
     CreatedAt?: SortOrder
@@ -5906,13 +6007,18 @@ export namespace Prisma {
     Id?: StringWithAggregatesFilter<"DetailUsers"> | string
     UserId?: StringWithAggregatesFilter<"DetailUsers"> | string
     NIK?: StringWithAggregatesFilter<"DetailUsers"> | string
-    Name?: StringWithAggregatesFilter<"DetailUsers"> | string
-    Departement?: StringWithAggregatesFilter<"DetailUsers"> | string
-    Divisi?: StringWithAggregatesFilter<"DetailUsers"> | string
+    KTPNo?: StringNullableWithAggregatesFilter<"DetailUsers"> | string | null
+    Name?: StringNullableWithAggregatesFilter<"DetailUsers"> | string | null
+    Departement?: StringNullableWithAggregatesFilter<"DetailUsers"> | string | null
+    Divisi?: StringNullableWithAggregatesFilter<"DetailUsers"> | string | null
     Address?: StringNullableWithAggregatesFilter<"DetailUsers"> | string | null
+    DOB?: DateTimeNullableWithAggregatesFilter<"DetailUsers"> | Date | string | null
     NoTlp?: StringNullableWithAggregatesFilter<"DetailUsers"> | string | null
     LocationCode?: StringNullableWithAggregatesFilter<"DetailUsers"> | string | null
+    Gender?: EnumGenderNullableWithAggregatesFilter<"DetailUsers"> | $Enums.Gender | null
     StatusKaryawan?: EnumStatusKaryawanWithAggregatesFilter<"DetailUsers"> | $Enums.StatusKaryawan
+    JoinDate?: DateTimeNullableWithAggregatesFilter<"DetailUsers"> | Date | string | null
+    ProfilePath?: StringNullableWithAggregatesFilter<"DetailUsers"> | string | null
     Status?: EnumStatusWithAggregatesFilter<"DetailUsers"> | $Enums.Status
     CreatedBy?: StringWithAggregatesFilter<"DetailUsers"> | string
     CreatedAt?: DateTimeWithAggregatesFilter<"DetailUsers"> | Date | string
@@ -6211,13 +6317,18 @@ export namespace Prisma {
   export type DetailUsersCreateInput = {
     Id?: string
     NIK: string
-    Name: string
-    Departement: string
-    Divisi: string
+    KTPNo?: string | null
+    Name?: string | null
+    Departement?: string | null
+    Divisi?: string | null
     Address?: string | null
+    DOB?: Date | string | null
     NoTlp?: string | null
     LocationCode?: string | null
+    Gender?: $Enums.Gender | null
     StatusKaryawan: $Enums.StatusKaryawan
+    JoinDate?: Date | string | null
+    ProfilePath?: string | null
     Status?: $Enums.Status
     CreatedBy: string
     CreatedAt?: Date | string
@@ -6233,13 +6344,18 @@ export namespace Prisma {
     Id?: string
     UserId: string
     NIK: string
-    Name: string
-    Departement: string
-    Divisi: string
+    KTPNo?: string | null
+    Name?: string | null
+    Departement?: string | null
+    Divisi?: string | null
     Address?: string | null
+    DOB?: Date | string | null
     NoTlp?: string | null
     LocationCode?: string | null
+    Gender?: $Enums.Gender | null
     StatusKaryawan: $Enums.StatusKaryawan
+    JoinDate?: Date | string | null
+    ProfilePath?: string | null
     Status?: $Enums.Status
     CreatedBy: string
     CreatedAt?: Date | string
@@ -6253,13 +6369,18 @@ export namespace Prisma {
   export type DetailUsersUpdateInput = {
     Id?: StringFieldUpdateOperationsInput | string
     NIK?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    Departement?: StringFieldUpdateOperationsInput | string
-    Divisi?: StringFieldUpdateOperationsInput | string
+    KTPNo?: NullableStringFieldUpdateOperationsInput | string | null
+    Name?: NullableStringFieldUpdateOperationsInput | string | null
+    Departement?: NullableStringFieldUpdateOperationsInput | string | null
+    Divisi?: NullableStringFieldUpdateOperationsInput | string | null
     Address?: NullableStringFieldUpdateOperationsInput | string | null
+    DOB?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     NoTlp?: NullableStringFieldUpdateOperationsInput | string | null
     LocationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    Gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     StatusKaryawan?: EnumStatusKaryawanFieldUpdateOperationsInput | $Enums.StatusKaryawan
+    JoinDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ProfilePath?: NullableStringFieldUpdateOperationsInput | string | null
     Status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     CreatedBy?: StringFieldUpdateOperationsInput | string
     CreatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6275,13 +6396,18 @@ export namespace Prisma {
     Id?: StringFieldUpdateOperationsInput | string
     UserId?: StringFieldUpdateOperationsInput | string
     NIK?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    Departement?: StringFieldUpdateOperationsInput | string
-    Divisi?: StringFieldUpdateOperationsInput | string
+    KTPNo?: NullableStringFieldUpdateOperationsInput | string | null
+    Name?: NullableStringFieldUpdateOperationsInput | string | null
+    Departement?: NullableStringFieldUpdateOperationsInput | string | null
+    Divisi?: NullableStringFieldUpdateOperationsInput | string | null
     Address?: NullableStringFieldUpdateOperationsInput | string | null
+    DOB?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     NoTlp?: NullableStringFieldUpdateOperationsInput | string | null
     LocationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    Gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     StatusKaryawan?: EnumStatusKaryawanFieldUpdateOperationsInput | $Enums.StatusKaryawan
+    JoinDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ProfilePath?: NullableStringFieldUpdateOperationsInput | string | null
     Status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     CreatedBy?: StringFieldUpdateOperationsInput | string
     CreatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6296,13 +6422,18 @@ export namespace Prisma {
     Id?: string
     UserId: string
     NIK: string
-    Name: string
-    Departement: string
-    Divisi: string
+    KTPNo?: string | null
+    Name?: string | null
+    Departement?: string | null
+    Divisi?: string | null
     Address?: string | null
+    DOB?: Date | string | null
     NoTlp?: string | null
     LocationCode?: string | null
+    Gender?: $Enums.Gender | null
     StatusKaryawan: $Enums.StatusKaryawan
+    JoinDate?: Date | string | null
+    ProfilePath?: string | null
     Status?: $Enums.Status
     CreatedBy: string
     CreatedAt?: Date | string
@@ -6316,13 +6447,18 @@ export namespace Prisma {
   export type DetailUsersUpdateManyMutationInput = {
     Id?: StringFieldUpdateOperationsInput | string
     NIK?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    Departement?: StringFieldUpdateOperationsInput | string
-    Divisi?: StringFieldUpdateOperationsInput | string
+    KTPNo?: NullableStringFieldUpdateOperationsInput | string | null
+    Name?: NullableStringFieldUpdateOperationsInput | string | null
+    Departement?: NullableStringFieldUpdateOperationsInput | string | null
+    Divisi?: NullableStringFieldUpdateOperationsInput | string | null
     Address?: NullableStringFieldUpdateOperationsInput | string | null
+    DOB?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     NoTlp?: NullableStringFieldUpdateOperationsInput | string | null
     LocationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    Gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     StatusKaryawan?: EnumStatusKaryawanFieldUpdateOperationsInput | $Enums.StatusKaryawan
+    JoinDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ProfilePath?: NullableStringFieldUpdateOperationsInput | string | null
     Status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     CreatedBy?: StringFieldUpdateOperationsInput | string
     CreatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6337,13 +6473,18 @@ export namespace Prisma {
     Id?: StringFieldUpdateOperationsInput | string
     UserId?: StringFieldUpdateOperationsInput | string
     NIK?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    Departement?: StringFieldUpdateOperationsInput | string
-    Divisi?: StringFieldUpdateOperationsInput | string
+    KTPNo?: NullableStringFieldUpdateOperationsInput | string | null
+    Name?: NullableStringFieldUpdateOperationsInput | string | null
+    Departement?: NullableStringFieldUpdateOperationsInput | string | null
+    Divisi?: NullableStringFieldUpdateOperationsInput | string | null
     Address?: NullableStringFieldUpdateOperationsInput | string | null
+    DOB?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     NoTlp?: NullableStringFieldUpdateOperationsInput | string | null
     LocationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    Gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     StatusKaryawan?: EnumStatusKaryawanFieldUpdateOperationsInput | $Enums.StatusKaryawan
+    JoinDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ProfilePath?: NullableStringFieldUpdateOperationsInput | string | null
     Status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     CreatedBy?: StringFieldUpdateOperationsInput | string
     CreatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6785,6 +6926,13 @@ export namespace Prisma {
     Id?: SortOrder
   }
 
+  export type EnumGenderNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.Gender | EnumGenderFieldRefInput<$PrismaModel> | null
+    in?: $Enums.Gender[] | null
+    notIn?: $Enums.Gender[] | null
+    not?: NestedEnumGenderNullableFilter<$PrismaModel> | $Enums.Gender | null
+  }
+
   export type EnumStatusKaryawanFilter<$PrismaModel = never> = {
     equals?: $Enums.StatusKaryawan | EnumStatusKaryawanFieldRefInput<$PrismaModel>
     in?: $Enums.StatusKaryawan[]
@@ -6814,13 +6962,18 @@ export namespace Prisma {
     Id?: SortOrder
     UserId?: SortOrder
     NIK?: SortOrder
+    KTPNo?: SortOrder
     Name?: SortOrder
     Departement?: SortOrder
     Divisi?: SortOrder
     Address?: SortOrder
+    DOB?: SortOrder
     NoTlp?: SortOrder
     LocationCode?: SortOrder
+    Gender?: SortOrder
     StatusKaryawan?: SortOrder
+    JoinDate?: SortOrder
+    ProfilePath?: SortOrder
     Status?: SortOrder
     CreatedBy?: SortOrder
     CreatedAt?: SortOrder
@@ -6835,13 +6988,18 @@ export namespace Prisma {
     Id?: SortOrder
     UserId?: SortOrder
     NIK?: SortOrder
+    KTPNo?: SortOrder
     Name?: SortOrder
     Departement?: SortOrder
     Divisi?: SortOrder
     Address?: SortOrder
+    DOB?: SortOrder
     NoTlp?: SortOrder
     LocationCode?: SortOrder
+    Gender?: SortOrder
     StatusKaryawan?: SortOrder
+    JoinDate?: SortOrder
+    ProfilePath?: SortOrder
     Status?: SortOrder
     CreatedBy?: SortOrder
     CreatedAt?: SortOrder
@@ -6856,13 +7014,18 @@ export namespace Prisma {
     Id?: SortOrder
     UserId?: SortOrder
     NIK?: SortOrder
+    KTPNo?: SortOrder
     Name?: SortOrder
     Departement?: SortOrder
     Divisi?: SortOrder
     Address?: SortOrder
+    DOB?: SortOrder
     NoTlp?: SortOrder
     LocationCode?: SortOrder
+    Gender?: SortOrder
     StatusKaryawan?: SortOrder
+    JoinDate?: SortOrder
+    ProfilePath?: SortOrder
     Status?: SortOrder
     CreatedBy?: SortOrder
     CreatedAt?: SortOrder
@@ -6871,6 +7034,16 @@ export namespace Prisma {
     DeletedAt?: SortOrder
     DeletedBy?: SortOrder
     Record?: SortOrder
+  }
+
+  export type EnumGenderNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Gender | EnumGenderFieldRefInput<$PrismaModel> | null
+    in?: $Enums.Gender[] | null
+    notIn?: $Enums.Gender[] | null
+    not?: NestedEnumGenderNullableWithAggregatesFilter<$PrismaModel> | $Enums.Gender | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumGenderNullableFilter<$PrismaModel>
+    _max?: NestedEnumGenderNullableFilter<$PrismaModel>
   }
 
   export type EnumStatusKaryawanWithAggregatesFilter<$PrismaModel = never> = {
@@ -7121,6 +7294,10 @@ export namespace Prisma {
     connect?: UsersWhereUniqueInput
   }
 
+  export type NullableEnumGenderFieldUpdateOperationsInput = {
+    set?: $Enums.Gender | null
+  }
+
   export type EnumStatusKaryawanFieldUpdateOperationsInput = {
     set?: $Enums.StatusKaryawan
   }
@@ -7323,6 +7500,13 @@ export namespace Prisma {
     _max?: NestedEnumRecordFilter<$PrismaModel>
   }
 
+  export type NestedEnumGenderNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.Gender | EnumGenderFieldRefInput<$PrismaModel> | null
+    in?: $Enums.Gender[] | null
+    notIn?: $Enums.Gender[] | null
+    not?: NestedEnumGenderNullableFilter<$PrismaModel> | $Enums.Gender | null
+  }
+
   export type NestedEnumStatusKaryawanFilter<$PrismaModel = never> = {
     equals?: $Enums.StatusKaryawan | EnumStatusKaryawanFieldRefInput<$PrismaModel>
     in?: $Enums.StatusKaryawan[]
@@ -7335,6 +7519,16 @@ export namespace Prisma {
     in?: $Enums.Status[]
     notIn?: $Enums.Status[]
     not?: NestedEnumStatusFilter<$PrismaModel> | $Enums.Status
+  }
+
+  export type NestedEnumGenderNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.Gender | EnumGenderFieldRefInput<$PrismaModel> | null
+    in?: $Enums.Gender[] | null
+    notIn?: $Enums.Gender[] | null
+    not?: NestedEnumGenderNullableWithAggregatesFilter<$PrismaModel> | $Enums.Gender | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumGenderNullableFilter<$PrismaModel>
+    _max?: NestedEnumGenderNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumStatusKaryawanWithAggregatesFilter<$PrismaModel = never> = {
@@ -7395,13 +7589,18 @@ export namespace Prisma {
   export type DetailUsersCreateWithoutUserInput = {
     Id?: string
     NIK: string
-    Name: string
-    Departement: string
-    Divisi: string
+    KTPNo?: string | null
+    Name?: string | null
+    Departement?: string | null
+    Divisi?: string | null
     Address?: string | null
+    DOB?: Date | string | null
     NoTlp?: string | null
     LocationCode?: string | null
+    Gender?: $Enums.Gender | null
     StatusKaryawan: $Enums.StatusKaryawan
+    JoinDate?: Date | string | null
+    ProfilePath?: string | null
     Status?: $Enums.Status
     CreatedBy: string
     CreatedAt?: Date | string
@@ -7415,13 +7614,18 @@ export namespace Prisma {
   export type DetailUsersUncheckedCreateWithoutUserInput = {
     Id?: string
     NIK: string
-    Name: string
-    Departement: string
-    Divisi: string
+    KTPNo?: string | null
+    Name?: string | null
+    Departement?: string | null
+    Divisi?: string | null
     Address?: string | null
+    DOB?: Date | string | null
     NoTlp?: string | null
     LocationCode?: string | null
+    Gender?: $Enums.Gender | null
     StatusKaryawan: $Enums.StatusKaryawan
+    JoinDate?: Date | string | null
+    ProfilePath?: string | null
     Status?: $Enums.Status
     CreatedBy: string
     CreatedAt?: Date | string
@@ -7489,13 +7693,18 @@ export namespace Prisma {
     Id?: StringFilter<"DetailUsers"> | string
     UserId?: StringFilter<"DetailUsers"> | string
     NIK?: StringFilter<"DetailUsers"> | string
-    Name?: StringFilter<"DetailUsers"> | string
-    Departement?: StringFilter<"DetailUsers"> | string
-    Divisi?: StringFilter<"DetailUsers"> | string
+    KTPNo?: StringNullableFilter<"DetailUsers"> | string | null
+    Name?: StringNullableFilter<"DetailUsers"> | string | null
+    Departement?: StringNullableFilter<"DetailUsers"> | string | null
+    Divisi?: StringNullableFilter<"DetailUsers"> | string | null
     Address?: StringNullableFilter<"DetailUsers"> | string | null
+    DOB?: DateTimeNullableFilter<"DetailUsers"> | Date | string | null
     NoTlp?: StringNullableFilter<"DetailUsers"> | string | null
     LocationCode?: StringNullableFilter<"DetailUsers"> | string | null
+    Gender?: EnumGenderNullableFilter<"DetailUsers"> | $Enums.Gender | null
     StatusKaryawan?: EnumStatusKaryawanFilter<"DetailUsers"> | $Enums.StatusKaryawan
+    JoinDate?: DateTimeNullableFilter<"DetailUsers"> | Date | string | null
+    ProfilePath?: StringNullableFilter<"DetailUsers"> | string | null
     Status?: EnumStatusFilter<"DetailUsers"> | $Enums.Status
     CreatedBy?: StringFilter<"DetailUsers"> | string
     CreatedAt?: DateTimeFilter<"DetailUsers"> | Date | string
@@ -7666,13 +7875,18 @@ export namespace Prisma {
   export type DetailUsersCreateManyUserInput = {
     Id?: string
     NIK: string
-    Name: string
-    Departement: string
-    Divisi: string
+    KTPNo?: string | null
+    Name?: string | null
+    Departement?: string | null
+    Divisi?: string | null
     Address?: string | null
+    DOB?: Date | string | null
     NoTlp?: string | null
     LocationCode?: string | null
+    Gender?: $Enums.Gender | null
     StatusKaryawan: $Enums.StatusKaryawan
+    JoinDate?: Date | string | null
+    ProfilePath?: string | null
     Status?: $Enums.Status
     CreatedBy: string
     CreatedAt?: Date | string
@@ -7686,13 +7900,18 @@ export namespace Prisma {
   export type DetailUsersUpdateWithoutUserInput = {
     Id?: StringFieldUpdateOperationsInput | string
     NIK?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    Departement?: StringFieldUpdateOperationsInput | string
-    Divisi?: StringFieldUpdateOperationsInput | string
+    KTPNo?: NullableStringFieldUpdateOperationsInput | string | null
+    Name?: NullableStringFieldUpdateOperationsInput | string | null
+    Departement?: NullableStringFieldUpdateOperationsInput | string | null
+    Divisi?: NullableStringFieldUpdateOperationsInput | string | null
     Address?: NullableStringFieldUpdateOperationsInput | string | null
+    DOB?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     NoTlp?: NullableStringFieldUpdateOperationsInput | string | null
     LocationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    Gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     StatusKaryawan?: EnumStatusKaryawanFieldUpdateOperationsInput | $Enums.StatusKaryawan
+    JoinDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ProfilePath?: NullableStringFieldUpdateOperationsInput | string | null
     Status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     CreatedBy?: StringFieldUpdateOperationsInput | string
     CreatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7706,13 +7925,18 @@ export namespace Prisma {
   export type DetailUsersUncheckedUpdateWithoutUserInput = {
     Id?: StringFieldUpdateOperationsInput | string
     NIK?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    Departement?: StringFieldUpdateOperationsInput | string
-    Divisi?: StringFieldUpdateOperationsInput | string
+    KTPNo?: NullableStringFieldUpdateOperationsInput | string | null
+    Name?: NullableStringFieldUpdateOperationsInput | string | null
+    Departement?: NullableStringFieldUpdateOperationsInput | string | null
+    Divisi?: NullableStringFieldUpdateOperationsInput | string | null
     Address?: NullableStringFieldUpdateOperationsInput | string | null
+    DOB?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     NoTlp?: NullableStringFieldUpdateOperationsInput | string | null
     LocationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    Gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     StatusKaryawan?: EnumStatusKaryawanFieldUpdateOperationsInput | $Enums.StatusKaryawan
+    JoinDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ProfilePath?: NullableStringFieldUpdateOperationsInput | string | null
     Status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     CreatedBy?: StringFieldUpdateOperationsInput | string
     CreatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7726,13 +7950,18 @@ export namespace Prisma {
   export type DetailUsersUncheckedUpdateManyWithoutUserInput = {
     Id?: StringFieldUpdateOperationsInput | string
     NIK?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    Departement?: StringFieldUpdateOperationsInput | string
-    Divisi?: StringFieldUpdateOperationsInput | string
+    KTPNo?: NullableStringFieldUpdateOperationsInput | string | null
+    Name?: NullableStringFieldUpdateOperationsInput | string | null
+    Departement?: NullableStringFieldUpdateOperationsInput | string | null
+    Divisi?: NullableStringFieldUpdateOperationsInput | string | null
     Address?: NullableStringFieldUpdateOperationsInput | string | null
+    DOB?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     NoTlp?: NullableStringFieldUpdateOperationsInput | string | null
     LocationCode?: NullableStringFieldUpdateOperationsInput | string | null
+    Gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     StatusKaryawan?: EnumStatusKaryawanFieldUpdateOperationsInput | $Enums.StatusKaryawan
+    JoinDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    ProfilePath?: NullableStringFieldUpdateOperationsInput | string | null
     Status?: EnumStatusFieldUpdateOperationsInput | $Enums.Status
     CreatedBy?: StringFieldUpdateOperationsInput | string
     CreatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

@@ -22,8 +22,8 @@ Content-Type: application/json
 ### Get All Users
 GET http://localhost:4000/v1/api/users/get-all
 Content-Type: application/json
-x-timestamp: 1747466206
-x-signature: 575188804e2b74a701a955dce34cd4d85777b39a471fdc0f4718b32404eb95d1
+x-timestamp: 1747819547
+x-signature: 85952eed24877180d72afbc9c7ed11f2db162ff4c60a2870710adc06023e0414
 
 ###
 

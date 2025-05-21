@@ -44,6 +44,9 @@ export const getAllDetailUser = async (
       },
       skip,
       take: limit,
+      orderBy: {
+        CreatedAt: "desc",
+      },
     });
 
     res
@@ -113,20 +116,38 @@ export const createDetailUser = async (
 ): Promise<void> => {
   try {
     const userId = req.TokeUserPayload?.id;
+
     const {
       Username,
       Email,
       RoleId,
+      KTPNo,
       Name,
       Departement,
       Divisi,
       Address,
+      DOB,
       NoTlp,
       LocationCode,
+      Gender,
       StatusKaryawan,
+      JoinDate,
     } = req.body;
+    const finalJoinDate = JoinDate ? new Date(JoinDate) : new Date();
 
-    const userCreate = await dbMain.users.findUnique({ where: { Id: userId } });
+    const userCreated = await dbMain.users.findUnique({
+      where: { Id: userId },
+    });
+
+    const file = req.file;
+    if (!file) {
+      res
+        .status(400)
+        .json(createResponse("USER", "ERROR", "Photo is required", null));
+      return;
+    }
+
+    const photoPath = `uploads/${file.filename}`;
 
     // Cek apakah Email sudah digunakan
     const emailExist = await dbMain.users.findUnique({ where: { Email } });
@@ -134,6 +155,17 @@ export const createDetailUser = async (
       res
         .status(400)
         .json(createResponse("USER", "ERROR", "Email sudah digunakan", null));
+      return;
+    }
+    const UsernameExist = await dbMain.users.findUnique({
+      where: { Username },
+    });
+    if (UsernameExist) {
+      res
+        .status(400)
+        .json(
+          createResponse("USER", "ERROR", "Username sudah digunakan", null)
+        );
       return;
     }
 
@@ -146,24 +178,11 @@ export const createDetailUser = async (
       return;
     }
 
-    // Cek apakah UserId sudah punya detailUser
-    const userDetailExist = await dbMain.detailUsers.findFirst({
-      where: { UserId: userId },
-    });
-    if (userDetailExist) {
-      res
-        .status(400)
-        .json(
-          createResponse("USER", "ERROR", "UserId sudah punya detail", null)
-        );
-      return;
-    }
-
     // Generate password & hash
-    const rawPassword = generatePassword(); // kamu bisa log / kirim via email
-    const hashedPassword = await bcrypt.hash(generatePassword(), 10);
+    const rawPassword = generatePassword(); // fungsi generatePassword harus kamu buat
+    const hashedPassword = await bcrypt.hash(rawPassword, 10);
 
-    // Generate NIK dari tanggal
+    // Generate NIK dari tanggal sekarang
     const now = new Date();
     const YYYY = now.getFullYear().toString();
     const MM = String(now.getMonth() + 1).padStart(2, "0");
@@ -172,59 +191,73 @@ export const createDetailUser = async (
     const uniquePart = Math.floor(10000 + Math.random() * 90000).toString();
     const NIK = `${datePart}${uniquePart}`;
 
-    // Buat akun user
-    const createAcount = await dbMain.users.create({
-      data: {
-        Username,
-        Email,
-        Password: hashedPassword,
-        RoleId: RoleId,
-        CreatedBy: userCreate?.Username || "System",
-      },
-      select: {
-        Id: true,
-        Username: true,
-        Email: true,
-        RoleId: true,
-        CreatedAt: true,
-      },
+    // Transaction untuk create user dan detail user
+    const result = await dbMain.$transaction(async (tx) => {
+      const createAcount = await tx.users.create({
+        data: {
+          Username,
+          Email,
+          Password: hashedPassword,
+          RoleId: Number(RoleId),
+          CreatedBy: userCreated?.Username || "System",
+        },
+        select: {
+          Id: true,
+          Username: true,
+          Email: true,
+          RoleId: true,
+          CreatedAt: true,
+        },
+      });
+
+      const detailUser = await tx.detailUsers.create({
+        data: {
+          UserId: createAcount.Id,
+          NIK,
+          KTPNo,
+          DOB: new Date(DOB),
+          Gender,
+          JoinDate: finalJoinDate,
+          ProfilePath: photoPath,
+          Name,
+          Departement,
+          Divisi,
+          Address,
+          NoTlp,
+          LocationCode,
+          StatusKaryawan,
+          Status: "Active",
+          Record: "Active",
+          CreatedBy: userCreated?.Username || "System",
+        },
+        select: {
+          Id: true,
+          UserId: true,
+          NIK: true,
+          Name: true,
+          KTPNo: true,
+          DOB: true,
+          Gender: true,
+          JoinDate: true,
+          ProfilePath: true,
+          Departement: true,
+          Divisi: true,
+          Address: true,
+          NoTlp: true,
+          LocationCode: true,
+          StatusKaryawan: true,
+          Status: true,
+        },
+      });
+
+      return { createAcount, detailUser };
     });
 
-    // Buat detail user
-    const detailUser = await dbMain.detailUsers.create({
-      data: {
-        UserId: createAcount.Id,
-        NIK,
-        Name,
-        Departement,
-        Divisi,
-        Address,
-        NoTlp,
-        LocationCode,
-        StatusKaryawan,
-        Status: "Active",
-        Record: "Active",
-        CreatedBy: userCreate?.Username || "System",
-      },
-      select: {
-        Id: true,
-        UserId: true,
-        NIK: true,
-        Name: true,
-        Departement: true,
-        Divisi: true,
-        Address: true,
-        NoTlp: true,
-        LocationCode: true,
-        StatusKaryawan: true,
-        Status: true,
-      },
-    });
-
+    // Response sukses
     res.status(200).json(
       createResponse("USER", "CREATE", "Success", {
-        ...detailUser,
-        rawPassword, // bisa dihapus kalau nggak mau expose
+        ...result.detailUser,
+        rawPassword, // password mentah, bisa dikirim email, hati2 jangan expose sembarangan
       })
     );
   } catch (error) {

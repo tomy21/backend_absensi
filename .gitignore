@@ -5,6 +5,7 @@
 
 # Build
 /dist
+/uploads
 
 # Logs
 logs

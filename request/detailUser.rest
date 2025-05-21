@@ -1,7 +1,7 @@
 ### Get All Detail Users
 GET http://localhost:4000/v1/api/detail-users/get-all?page=1&limit=10
-X-timestamp: 1747564102
-X-Signature: 6fbbd463b2ac984096d873e4ca1b79a8f3569b1074e703040d4c914e32840a49
+X-timestamp: 1747819547
+X-Signature: 85952eed24877180d72afbc9c7ed11f2db162ff4c60a2870710adc06023e0414
 
 ###
 

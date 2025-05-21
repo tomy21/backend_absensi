@@ -16,6 +16,7 @@ export const verifyHMAC = (
 ) => {
   const stringifiedData =
     typeof data === "string" ? data : JSON.stringify(data);
+  console.log(signature, stringifiedData, timestamp);
   const expected = generateHMAC(stringifiedData, timestamp);
   return expected === signature;
 };

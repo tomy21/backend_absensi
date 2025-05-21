@@ -5,7 +5,6 @@ import {
 } from "../helper/responseCode";
 import { dbMain, dbSecondary } from "../prisma/client";
 import { getDistanceFromLatLonInKm } from "../utils/havesine";
-import path from "path";
 
 export const Attendance = async (
   req: Request,

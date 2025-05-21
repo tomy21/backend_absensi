@@ -19,7 +19,7 @@ export const signatureMiddleware = (
 
   const body = JSON.stringify(req.body || {});
   const valid = verifyHMAC(signature, body, timestamp);
-  console.log(signature, body, timestamp);
+
   if (!valid) {
     res.status(401).json({ message: "Invalid signature" });
     return;

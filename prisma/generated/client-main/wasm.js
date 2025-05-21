@@ -147,13 +147,18 @@ exports.Prisma.DetailUsersScalarFieldEnum = {
   Id: 'Id',
   UserId: 'UserId',
   NIK: 'NIK',
+  KTPNo: 'KTPNo',
   Name: 'Name',
   Departement: 'Departement',
   Divisi: 'Divisi',
   Address: 'Address',
+  DOB: 'DOB',
   NoTlp: 'NoTlp',
   LocationCode: 'LocationCode',
+  Gender: 'Gender',
   StatusKaryawan: 'StatusKaryawan',
+  JoinDate: 'JoinDate',
+  ProfilePath: 'ProfilePath',
   Status: 'Status',
   CreatedBy: 'CreatedBy',
   CreatedAt: 'CreatedAt',
@@ -213,12 +218,14 @@ exports.Prisma.DetailUsersOrderByRelevanceFieldEnum = {
   Id: 'Id',
   UserId: 'UserId',
   NIK: 'NIK',
+  KTPNo: 'KTPNo',
   Name: 'Name',
   Departement: 'Departement',
   Divisi: 'Divisi',
   Address: 'Address',
   NoTlp: 'NoTlp',
   LocationCode: 'LocationCode',
+  ProfilePath: 'ProfilePath',
   CreatedBy: 'CreatedBy',
   UpdatedBy: 'UpdatedBy',
   DeletedBy: 'DeletedBy'
@@ -240,6 +247,11 @@ exports.Record = exports.$Enums.Record = {
   Active: 'Active',
   Inactive: 'Inactive',
   Delete: 'Delete'
+};
+
+exports.Gender = exports.$Enums.Gender = {
+  Pria: 'Pria',
+  Perempuan: 'Perempuan'
 };
 
 exports.StatusKaryawan = exports.$Enums.StatusKaryawan = {
