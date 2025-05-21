@@ -9,6 +9,6 @@ const router = express.Router();
 
 router.post("/signatureAddUser", AddSignatureUserAccount);
 router.post("/signatureAddUserDetail", AddSignatureUserDetail);
-router.post("/signatureGet", GetSignature);
+router.get("/signatureGet", GetSignature);
 
 export default router;

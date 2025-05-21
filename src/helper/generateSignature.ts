@@ -17,6 +17,6 @@ export const GenerateSignature = (body: {} = {}) => {
   hmac.update(stringifiedBody + timestamp);
   const signature = hmac.digest("hex");
   const response = { timestamp, signature };
-
+  console.log(signature, timestamp);
   return response;
 };
