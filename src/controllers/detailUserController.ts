@@ -78,9 +78,13 @@ export const getDetailUserById = async (
       where: { Id: id }, // Konversi ke number
       select: {
         Id: true,
-        UserId: true, // ganti ke String karena relasi ke Users.Id
+        UserId: true,
+        KTPNo: true,
         NIK: true,
         Name: true,
+        DOB: true,
+        Gender: true,
+        JoinDate: true,
         Departement: true,
         Divisi: true,
         Address: true,
