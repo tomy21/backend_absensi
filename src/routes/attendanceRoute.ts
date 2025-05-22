@@ -16,6 +16,6 @@ router.use(authMiddleware as express.RequestHandler);
 router.post("/In", upload.single("photo"), Attendance);
 router.post("/Out", upload.single("photo"), AttendanceOut);
 router.get("/get-all", getAllAttendance);
-router.get("/get-byid/:id", getByIdAttendance);
+router.get("/get-byid/", getByIdAttendance);
 
 export default router;

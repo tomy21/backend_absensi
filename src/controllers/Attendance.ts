@@ -14,6 +14,12 @@ export const Attendance = async (
     const userId = req.TokeUserPayload?.id;
     const { longitude, latitude } = req.body;
 
+    const startOfDay = new Date();
+    startOfDay.setHours(0, 0, 0, 0); // 00:00:00.000
+
+    const endOfDay = new Date();
+    endOfDay.setHours(23, 59, 59, 999); // 23:59:59.999
+
     const now = new Date();
     const utc7Date = new Date(now.getTime() + 7 * 60 * 60 * 1000);
 
@@ -88,6 +94,33 @@ export const Attendance = async (
         .status(404)
         .json(
           createResponse("ATTENDANCE", "ERROR", "Location not found", null)
+        );
+      return;
+    }
+
+    const lastAttendance = await dbMain.attendance.findFirst({
+      where: {
+        UserId: userId,
+        Date: {
+          gte: startOfDay,
+          lte: endOfDay,
+        },
+      },
+      orderBy: {
+        Date: "desc",
+      },
+    });
+
+    if (lastAttendance) {
+      res
+        .status(404)
+        .json(
+          createResponse(
+            "ATTENDANCE",
+            "ERROR",
+            "Kamu sudah lakukan absen masuk",
+            null
+          )
         );
       return;
     }
@@ -238,7 +271,7 @@ export const AttendanceOut = async (
           createResponse(
             "ATTENDANCE",
             "ERROR",
-            "No attendance record found today",
+            "Kamu belum absen masuk hariu",
             null
           )
         );
@@ -400,10 +433,19 @@ export const getByIdAttendance = async (
   res: Response
 ): Promise<void> => {
   try {
-    const { id } = req.params;
+    const userId = req.TokeUserPayload?.id;
+    const startOfDay = new Date();
+    startOfDay.setHours(0, 0, 0, 0); // 00:00:00.000
+
+    const endOfDay = new Date();
+    endOfDay.setHours(23, 59, 59, 999); // 23:59:59.999
     const attendance = await dbMain.attendance.findFirst({
       where: {
-        Id: Number(id),
+        UserId: userId,
+        Date: {
+          gte: startOfDay,
+          lte: endOfDay,
+        },
       },
       select: {
         Id: true,

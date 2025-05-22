@@ -25,5 +25,5 @@ GET http://localhost:4000/v1/api/attendance/get-all
 Content-Type: application/json
 
 ### Create Detail User
-GET http://localhost:4000/v1/api/attendance/get-byid/5
+GET http://localhost:4000/v1/api/attendance/get-byid
 Content-Type: application/json
