@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/client-third"
+}
+
+datasource db {
+  provider = "mysql" // untuk MariaDB tetap pakai ini
+  url      = env("DATABASE_URL_THIRD")
+}
+
+enum RecordStatus {
+  Active   @map("1")
+  Inactive @map("0")
+  Delete   @map("2")
+}
+
+model MasterTariff {
+  Id                        Int          @id @default(autoincrement())
+  LocationCode              String
+  LocationName              String
+  FirstTariffMobilWeekDay   Int?         @default(0)
+  SecondTariffMobilWeekDay  Int?         @default(0)
+  MaximalTariffMobilWeekDay Int?         @default(0)
+  FirstTariffMobilWeekEnd   Int?         @default(0)
+  SecondTariffMobilWeekEnd  Int?         @default(0)
+  MaximalTariffMobilWeekEnd Int?         @default(0)
+  FirstTarrifValetWeekDay   Int?         @default(0)
+  SecondTariffValetWeekDay  Int?         @default(0)
+  MaximalTariffValetWeekDay Int?         @default(0)
+  FirstTariffValetWeekEnd   Int?         @default(0)
+  SecondTariffValetWeekEnd  Int?         @default(0)
+  MaximalTariffValetWeekEnd Int?         @default(0)
+  FirstTariffVIPWeekDay     Int?         @default(0)
+  SecondTariffVIPWeekDay    Int?         @default(0)
+  MaximalTariffVIPWeekDay   Int?         @default(0)
+  FirstTariffVIPWeekEnd     Int?         @default(0)
+  SecondTariffVIPWeekEnd    Int?         @default(0)
+  MaximalTariffVIPWeekEnd   Int?         @default(0)
+  FirstTariffMotorWeekDay   Int?         @default(0)
+  SecondTariffMotorWeekDay  Int?         @default(0)
+  MaximalTariffMotorWeekDay Int?         @default(0)
+  FirstTariffMotorWeekEnd   Int?         @default(0)
+  SecondTariffMotorWeekEnd  Int?         @default(0)
+  MaximalTariffMotorWeekEnd Int?         @default(0)
+  RecordStatus              RecordStatus @default(Active)
+  CreatedAt                 DateTime     @default(now())
+  CreatedBy                 String
+  UpdatedAt                 DateTime     @updatedAt
+  UpdatedBy                 String?
+}

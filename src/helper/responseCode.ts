@@ -10,6 +10,7 @@ export const RESPONSE_CODES = {
   TYPEMEMBER: 29,
   MEMBERSHIP: 30,
   HISTORYPAYMENT: 31,
+  MASTERTARIFF: 32,
 };
 
 export type ResponseType = "CREATE" | "READ" | "UPDATE" | "DELETE" | "ERROR";
