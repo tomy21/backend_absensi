@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import { generateToken } from "../utils/jwt";
 import { dbMain } from "../prisma/client";
 import { Record } from "../../prisma/generated/client-main";
+import { createResponse } from "../helper/responseCode";
 
 export const login = async (req: Request, res: Response): Promise<void> => {
   const { identifier, password, remember } = req.body;
@@ -45,4 +46,18 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     message: "Login success",
     user: { id: user.Id, username: user.Username, role: user.RoleId },
   });
+};
+
+export const logout = async (req: Request, res: Response): Promise<void> => {
+  try {
+    res.clearCookie("token", {
+      httpOnly: true,
+      sameSite: "lax",
+      secure: false, // true di production
+    });
+    res.status(200).json(createResponse("USER", "UPDATE", "Success", null));
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(createResponse("USER", "ERROR", "Server error", null));
+  }
 };

@@ -1,12 +1,13 @@
 import express from "express";
 import { authMiddleware } from "../middleware/authMiddleware";
 import { signatureMiddleware } from "../middleware/signatureMiddleware";
-import { login } from "../controllers/authController";
+import { login, logout } from "../controllers/authController";
 
 const router = express.Router();
 
 // Contoh route login TIDAK perlu auth/signature
 router.post("/login", login);
+router.post("/logout", logout);
 
 // Route yang butuh both auth dan signature
 router.post(

@@ -249,17 +249,3 @@ export const restoreUser = async (
     res.status(500).json(createResponse("USER", "ERROR", "Server error", null));
   }
 };
-
-export const logout = async (req: Request, res: Response): Promise<void> => {
-  try {
-    res.clearCookie("token", {
-      httpOnly: true,
-      sameSite: "lax",
-      secure: false, // true di production
-    });
-    res.status(200).json(createResponse("USER", "UPDATE", "Success", null));
-  } catch (error) {
-    console.error(error);
-    res.status(500).json(createResponse("USER", "ERROR", "Server error", null));
-  }
-};
