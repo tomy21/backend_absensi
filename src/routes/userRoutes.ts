@@ -5,7 +5,6 @@ import {
   createUser,
   updateUser,
   deleteUser,
-  logout,
   restoreUser,
 } from "../controllers/userController";
 import { authMiddleware } from "../middleware/authMiddleware";
@@ -23,6 +22,5 @@ router.post("/", createUser);
 router.put("/updated/:id", updateUser);
 router.put("/restore-user/:id", restoreUser);
 router.delete("/delete/:id", deleteUser);
-router.post("/logout", logout);
 
 export default router;
