@@ -201,7 +201,6 @@ exports.Prisma.NullsOrder = {
 };
 
 exports.Prisma.UsersOrderByRelevanceFieldEnum = {
-  Id: 'Id',
   Username: 'Username',
   Email: 'Email',
   Password: 'Password',
@@ -216,7 +215,6 @@ exports.Prisma.RoleOrderByRelevanceFieldEnum = {
 
 exports.Prisma.DetailUsersOrderByRelevanceFieldEnum = {
   Id: 'Id',
-  UserId: 'UserId',
   NIK: 'NIK',
   KTPNo: 'KTPNo',
   Name: 'Name',

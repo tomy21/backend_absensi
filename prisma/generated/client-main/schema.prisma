@@ -39,7 +39,7 @@ enum StatusAttendance {
 }
 
 model Users {
-  Id        String    @id @default(uuid()) // UUID sebagai primary key
+  Id        Int       @id @default(autoincrement()) // UUID sebagai primary key
   Username  String    @unique
   Email     String    @unique
   Password  String
@@ -70,7 +70,7 @@ model Role {
 
 model DetailUsers {
   Id             String         @id @default(uuid())
-  UserId         String
+  UserId         Int
   NIK            String
   KTPNo          String?
   Name           String?
