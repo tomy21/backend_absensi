@@ -145,7 +145,7 @@ export const createDetailUser = async (
     const finalJoinDate = JoinDate ? new Date(JoinDate) : new Date();
 
     const userCreated = await dbMain.users.findUnique({
-      where: { Id: userId },
+      where: { Id: Number(userId) },
     });
 
     const file = req.file;
@@ -284,7 +284,7 @@ export const updateDetailUser = async (
     const userId = req.TokeUserPayload?.id;
 
     const userUpdated = await dbMain.users.findUnique({
-      where: { Id: userId },
+      where: { Id: Number(userId) },
     });
 
     const file = req.file;
@@ -324,7 +324,7 @@ export const updateDetailUser = async (
     // Mulai transaksi Prisma
     const [updateEmail, detailUser] = await dbMain.$transaction([
       dbMain.users.update({
-        where: { Id: userId },
+        where: { Id: Number(userId) },
         data: {
           Email,
           UpdatedBy: userUpdated?.Username || "System",

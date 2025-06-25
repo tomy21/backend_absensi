@@ -64,7 +64,7 @@ export const getUserById = async (
     // const userId = req.TokeUserPayload?.id;
     const { id } = req.params;
     const user = await dbMain.users.findUnique({
-      where: { Id: id },
+      where: { Id: Number(id) },
       select: {
         Id: true,
         Username: true,
@@ -103,7 +103,9 @@ export const createUser = async (
     const userId = req.TokeUserPayload?.id;
     const { Username, Email, Password, RoleId } = req.body;
 
-    const userCreate = await dbMain.users.findUnique({ where: { Id: userId } });
+    const userCreate = await dbMain.users.findUnique({
+      where: { Id: Number(userId) },
+    });
 
     // Validasi duplikasi
     const existingUser = await dbMain.users.findFirst({
@@ -164,7 +166,7 @@ export const updateUser = async (
     const { id } = req.params;
     const { Username, Email, Password, RoleId } = req.body;
 
-    const user = await dbMain.users.findUnique({ where: { Id: id } });
+    const user = await dbMain.users.findUnique({ where: { Id: Number(id) } });
     if (!user) {
       res
         .status(404)
@@ -188,7 +190,7 @@ export const updateUser = async (
       : undefined;
 
     const updatedUser = await dbMain.users.update({
-      where: { Id: id },
+      where: { Id: Number(id) },
       data: {
         Username,
         Email,
@@ -220,7 +222,7 @@ export const deleteUser = async (
   try {
     const { id } = req.params;
     await dbMain.users.update({
-      where: { Id: id },
+      where: { Id: Number(id) },
       data: { Record: Record.Inactive },
     });
     res.status(200).json(createResponse("USER", "DELETE", "Success", null));
@@ -237,7 +239,7 @@ export const restoreUser = async (
   try {
     const { id } = req.params;
     const user = await dbMain.users.update({
-      where: { Id: id },
+      where: { Id: Number(id) },
       data: { Record: Record.Active },
     });
     res

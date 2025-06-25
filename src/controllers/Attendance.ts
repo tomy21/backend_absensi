@@ -11,7 +11,7 @@ export const Attendance = async (
   res: Response
 ): Promise<void> => {
   try {
-    const userId = req.TokeUserPayload?.id;
+    const userId = Number(req.TokeUserPayload?.id);
     const { longitude, latitude } = req.body;
 
     const startOfDay = new Date();
@@ -100,7 +100,7 @@ export const Attendance = async (
 
     const lastAttendance = await dbMain.attendance.findFirst({
       where: {
-        UserId: userId,
+        UserId: userId.toString(),
         Date: {
           gte: startOfDay,
           lte: endOfDay,
@@ -127,7 +127,7 @@ export const Attendance = async (
 
     const attendance = await dbMain.attendance.create({
       data: {
-        UserId: userId || "",
+        UserId: userId.toString() || "",
         LocationCode: locationUser.LocationCode || "",
         LocationName: refLocationUser.location_name || "",
         Fullname: locationUser.Name || "",
@@ -189,7 +189,7 @@ export const AttendanceOut = async (
 
     const locationUser = await dbMain.detailUsers.findFirst({
       where: {
-        UserId: userId,
+        UserId: Number(userId),
       },
       select: {
         LocationCode: true,
