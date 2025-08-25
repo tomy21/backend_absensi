@@ -17,13 +17,13 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     },
   });
   if (!user) {
-    res.status(401).json({ message: "Invalid credentials" });
+    res.status(401).json({ message: "Invalid credentials salah" });
     return;
   }
 
   const valid = await bcrypt.compare(password, user.Password);
   if (!valid) {
-    res.status(401).json({ message: "Invalid credentials" });
+    res.status(401).json({ message: "Invalid credentials password" });
     return;
   }
   await dbMain.users.update({
@@ -31,7 +31,11 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     data: { LastLogin: utc7Date },
   });
 
-  const token = generateToken({ id: user.Id, role: user.RoleId });
+  const token = generateToken({
+    id: user.Id,
+    username: user.Username,
+    role: user.RoleId,
+  });
 
   res.cookie("token", token, {
     httpOnly: true,
